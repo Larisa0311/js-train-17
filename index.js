@@ -61,7 +61,8 @@ function extractTextInParentheses(str) {
   // Створення масиву зі знайденими текстами.
   // Повернення масиву вилучених текстів.
   let regexWord = /\((.*?)\)/g;
-  let arrResult = [...str.match(regexWord)];
+  let matches = str.matchAll(regexWord);
+  let arrResult = Array.from(matches, (match) => match[1]);
 
   return arrResult;
 }
@@ -85,7 +86,7 @@ function countEmails(str) {
   // Підрахунок кількості email-адрес.
   // Повернення кількості email-адрес.
   let regexEmail = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
-  let countEmail = [...str.match(regexEmail)];
+  let countEmail = str.match(regexEmail);
  
   return countEmail.length;
 }
